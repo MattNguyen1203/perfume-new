@@ -1,0 +1,310 @@
+.wrapper {
+  overflow-x: hidden;
+  text-align: center;
+}
+
+// Banner
+
+.banner {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  background-image: url(https://demo.darrelwilson.com/olivia/wp-content/uploads/sites/93/2022/07/hero-2U8ZUJ.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.banner-title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 62%;
+  margin-left: 6rem;
+  line-height: 1.3;
+  text-align: left;
+
+  .banner-name {
+    font-family: var(--font-6);
+    font-size: 5.5rem;
+    letter-spacing: 3px;
+  }
+
+  .banner-line {
+    font-size: 5.5rem;
+    font-family: var(--font-7);
+  }
+
+  .banner-line-small {
+    font-size: 2.5rem;
+    font-family: var(--font-8);
+    animation: flyin 1s forwards;
+  }
+}
+
+.banner-img {
+  animation-delay: 2s;
+  flex: 1 1;
+
+  img {
+    animation: slide 1s forwards;
+    width: 100%;
+  }
+}
+
+// Description
+
+.description {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 70%;
+  height: 500px;
+  margin: auto;
+  margin-top: 200px;
+  padding: 0 20px;
+}
+
+.image {
+  width: 100%;
+  position: absolute;
+  top: -200px;
+
+  img {
+    width: 25%;
+    z-index: 2;
+  }
+}
+
+.content {
+  margin-top: 100px;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: url(https://demo.darrelwilson.com/olivia/wp-content/uploads/sites/93/2022/07/bg2-A92GRA.jpg);
+    opacity: 0.4;
+    height: 100%;
+    width: 100%;
+  }
+
+  .title {
+    font-size: 4.2rem;
+    font-weight: 600;
+    font-family: var(--font-6);
+  }
+
+  .sub-title {
+    font-size: 2.5rem;
+    font-family: var(--font-8);
+    margin-bottom: 18px;
+  }
+
+  .main-content {
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+  }
+}
+
+// Search
+
+.search {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 70%;
+  height: 200px;
+  margin: auto;
+  margin-top: 5rem;
+  background: url(https://demos.freehtml5.co/aline/premium/assets/images/leaf-left.png) -1%
+      110% no-repeat,
+    url(https://demos.freehtml5.co/aline/premium/assets/images/leaf-right.png)
+      101% 110% no-repeat #f8f8f8;
+}
+
+.label {
+  margin-bottom: 0.5rem;
+  font-family: var(--font-6);
+  font-weight: 500;
+  line-height: 1.2;
+  font-size: 6rem;
+}
+.search-name {
+  input {
+    font-family: var(--font-7);
+    font-size: 2rem;
+    width: 50%;
+    background: url(https://demos.freehtml5.co/aline/premium/assets/images/input-bg.png)
+      transparent no-repeat left bottom;
+  }
+}
+
+// Intro
+
+.intro {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  width: 80%;
+  margin: 100px auto;
+}
+
+.intro-layout {
+  display: flex;
+  flex-direction: row;
+  padding: 1.5rem;
+}
+
+.intro-img {
+  width: 100%;
+  text-align: start;
+  background-size: 90%;
+  background-repeat: no-repeat;
+
+  img {
+    width: 87%;
+    height: 88%;
+  }
+}
+
+.intro-info {
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+}
+
+//Sub-Link
+.subLink {
+  margin-bottom: 50px;
+}
+.subLink-item {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 70vh;
+  min-height: 700px;
+  padding: 0 5rem;
+}
+.item-img {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 40%;
+  background-size: 80%;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  img {
+    width: 60%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    position: relative;
+    border-radius: 10px;
+  }
+}
+
+.item-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 60%;
+  line-height: 1.8;
+
+  .item-title {
+    font-family: var(--font-6);
+    font-weight: 600;
+    letter-spacing: 3px;
+    color: rgb(173, 59, 59);
+    font-size: 3.5rem;
+  }
+
+  .item-subTitle {
+    font-size: 5.2rem;
+    font-family: var(--font-7);
+  }
+}
+
+// Founder
+
+.founder {
+  display: flex;
+  margin-bottom: 7rem;
+}
+.founder-img {
+  img {
+    width: 60%;
+    transform: rotate(13deg);
+  }
+}
+
+.founder-info {
+  width: 80%;
+  margin-right: 5rem;
+  text-align: justify;
+  font-size: 1.3rem;
+}
+
+.founder-title {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.founder-name {
+  font-size: 2rem;
+  margin: 1rem 0;
+}
+
+.founder-content {
+  display: flex;
+  flex-direction: row;
+
+  .main-content {
+    width: 120%;
+  }
+
+  .right {
+    margin-left: 3rem;
+  }
+}
+
+.founder-sign {
+  font-family: var(--font-6);
+  font-size: 2rem;
+}
+
+.founder-sign-img {
+  margin: 2rem 0 1rem;
+  img {
+    width: 20%;
+  }
+}
+
+// Animation
+
+@keyframes flyin {
+  from {
+    opacity: 0;
+    margin-top: 80%;
+  }
+  to {
+    opacity: 1;
+    margin-top: 2rem;
+  }
+}
+
+@keyframes slide {
+  from {
+    opacity: 0;
+    margin-left: 100%;
+    margin-top: 100%;
+  }
+  to {
+    opacity: 1;
+    margin-left: 25%;
+    margin-top: 20%;
+  }
+}
