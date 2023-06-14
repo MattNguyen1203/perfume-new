@@ -5,14 +5,30 @@ import classNames from "classnames/bind";
 import Button from "~/components/Button/Button";
 import getIntro, { introList, subLink } from "./components/config";
 import founder from "../Home/components/image/founder.png";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 const cx = classNames.bind(styles);
 const Home = () => {
-  const navigate = useNavigate;
+  const navigate = useNavigate();
+  const [inputValue, setInputValue] = useState("");
+  const handleRoute = (url) => {
+    navigate(url);
+  };
+
+  const handleChange = (e) => {
+    setInputValue(e.target.value);
+  };
+
+  const handlePress = (e) => {
+    if (e.key === "Enter") {
+      navigate(`/products?name=${inputValue}`);
+    }
+  };
+
   return (
     <div className={cx("wrapper")}>
       {/* Banner */}
-
       <div className={cx("banner")}>
         <div className={cx("banner-title")}>
           <div className={cx("banner-name")}>Perfume for the Perfection</div>
@@ -25,14 +41,14 @@ const Home = () => {
           <div className={cx("banner-btn")}>
             <Button
               className={cx("btn-shop")}
-              onClick={() => navigate("/products")}
+              onClick={() => handleRoute("/products")}
             >
               {" "}
               Buy Now
             </Button>
             <Button
               className={cx("btn-shop")}
-              onClick={() => navigate("/stores")}
+              onClick={() => handleRoute("/stores")}
             >
               {" "}
               See More
@@ -78,9 +94,9 @@ const Home = () => {
         <div className={cx("search-name")}>
           <input
             placeholder="Enter the name"
-            // onKeyPress={handlePress}
-            // onChange={handleChange}
-            // value={inputValue}
+            onKeyPress={handlePress}
+            onChange={handleChange}
+            value={inputValue}
           />
         </div>
       </div>
@@ -115,7 +131,13 @@ const Home = () => {
                 <div className={cx("item-subTitle")}>{item.subTitle}</div>
                 <div className={cx("item-content")}>{item.content}</div>
                 <div className={cx("item-btn")}>
-                  <Button onClick={() => navigate(item.url)}> Buy Now</Button>
+                  <Button
+                    onClick={() => navigate(item.url)}
+                    className="btn-shop"
+                  >
+                    {" "}
+                    Buy Now
+                  </Button>
                 </div>
               </div>
             </div>

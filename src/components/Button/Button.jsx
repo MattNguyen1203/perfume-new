@@ -4,9 +4,10 @@ import classNames from "classnames/bind";
 const cx = classNames.bind(styles);
 
 const Button = (props) => {
-  const { children, onClick, className } = props;
+  const { children, onClick, className, type } = props;
+
   return (
-    <button onClick={onClick} className={cx(className)}>
+    <button onClick={onClick} className={cx(className)} type={type}>
       {children}
     </button>
   );

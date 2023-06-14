@@ -1,20 +1,24 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { Fragment, useEffect } from "react";
+import { createBrowserHistory } from "history";
+import { useDispatch, useSelector } from "react-redux";
 import { publicRoutes } from "./routes";
-import { Fragment } from "react";
-// import Header from "./components/DefaultLayouts/Header";
-// import { useDispatch, useSelector } from "react-redux";
-// import {
-//   getOrder,
-//   setOrder,
-// } from "./pages/user/products/ProductDetail/productDetailSlice";
-// import { useEffect } from "react";
-// import Footer from "./components/DefaultLayouts/Footer/Footer";
+import { getPendingOrder } from "./store/slices/orderSlice";
 
 function App() {
+  const history = createBrowserHistory();
+  const { list } = useSelector((state) => state.order);
+  const dispatch = useDispatch();
+
+  // Get Pending Order
+  useEffect(() => {
+    dispatch(getPendingOrder());
+  }, [JSON.stringify(list)]);
+  console.log(list);
+
   return (
-    <Router>
+    <Router history={history}>
       <div className="App">
-        {/* <Header /> */}
         <Routes>
           {publicRoutes.map((route, index) => {
             const Page = route.component;
@@ -50,7 +54,6 @@ function App() {
             );
           })}
         </Routes>
-        {/* <Footer /> */}
       </div>
     </Router>
   );

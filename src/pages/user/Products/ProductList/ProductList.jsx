@@ -21,11 +21,36 @@ const ProductList = () => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   // Active page and filter field
-  const [activePage, setActivePage] = useState(searchParams.get("page"));
-
+  const [activePage, setActivePage] = useState(searchParams.get("page") || 1);
   // Call API list
   useEffect(() => {
-    dispatch(getProductList({ ...filterList, page: activePage || 1 }));
+    const filterKey = [
+      "sort",
+      "aroma",
+      "brand",
+      "type",
+      "price",
+      "stock",
+      "page",
+      "name",
+    ];
+    const getParam = (filterKey) => {
+      let paramList = {};
+      filterKey.forEach((item) => {
+        if (searchParams.get(item) !== null) {
+          paramList = { ...paramList, [item]: searchParams.get(item) };
+        }
+      });
+
+      if (paramList.page === undefined) {
+        return { ...paramList, page: 1 };
+      } else {
+        return paramList;
+      }
+    };
+    dispatch(getProductList(getParam(filterKey)));
+
+    setActivePage(searchParams.get("page") || 1);
   }, [filterList, activePage]);
 
   const handleActivePage = (page) => {

@@ -1,14 +1,32 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import productAPI from "~/api/user/productAPI";
 
+// Get List product
 export const getProductList = createAsyncThunk(
-  "productList/getProductList",
+  "product/getProductList",
   async (arg, thunkAPI) => {
-    const res = await productAPI.filter(arg);
-    return {
-      list: res.list,
-      totalPage: res.numberOfPages,
-    };
+    try {
+      const res = await productAPI.filter(arg);
+      return {
+        list: res.list,
+        totalPage: res.numberOfPages,
+      };
+    } catch (error) {
+      console.log(error);
+    }
+  }
+);
+
+// Get Product's details
+export const getProductInfo = createAsyncThunk(
+  "product/getProductInfo",
+  async (param, thunkAPI) => {
+    try {
+      const res = await productAPI.getProductInfo(param);
+      return res;
+    } catch (error) {
+      console.log(error);
+    }
   }
 );
 
@@ -20,6 +38,7 @@ const productSlice = createSlice({
       list: [],
       totalPage: 0,
     },
+    productInfo: {},
     isLoading: true,
   },
   reducers: {
@@ -43,6 +62,14 @@ const productSlice = createSlice({
     [getProductList.fulfilled]: (state, action) => {
       state.productList.list = action.payload.list || [];
       state.productList.totalPage = action.payload.totalPage;
+      state.isLoading = false;
+    },
+
+    [getProductInfo.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [getProductInfo.fulfilled]: (state, action) => {
+      state.productInfo = action.payload;
       state.isLoading = false;
     },
   },

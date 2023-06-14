@@ -9,6 +9,5 @@ export const concateString = (obj) => {
       result += `${key}=${obj[key]}&`;
     }
   }
-  console.log(result);
   return result;
 };

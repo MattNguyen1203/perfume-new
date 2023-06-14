@@ -136,4 +136,4 @@ const Sidebar = () => {
   );
 };
 
-export default memo(Sidebar);
+export default Sidebar;

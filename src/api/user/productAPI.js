@@ -5,7 +5,7 @@ const productAPI = {
   getAll: () => {
     return axiosClient.get(url);
   },
-  get: (id) => {
+  getProductInfo: (id) => {
     return axiosClient.get(`${url}/${id}`);
   },
   filter: (params) => {
